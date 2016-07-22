@@ -1,25 +1,25 @@
 <h3>This is the contact page</h3>
 
-<%= form_tag("/products/create", method: "post") do %>
+<%= form_tag("/products/edit", method: "post") do %>
 
 <div>
   <%= label_tag(:name) %>
-  <%= text_field_tag(:name) %>
+  <%= text_field_tag(:name, @product.name) %>
 </div>
 
 <div>
  <%= label_tag(:price) %>
-<%= text_field_tag(:price) %>
+<%= text_field_tag(:price, @product.price) %>
 </div>
 
 <div>
  <%= label_tag(:color) %>
-<%= text_field_tag(:color) %>
+<%= text_field_tag(:color, @product.color) %>
 </div>
 
 <div>
 <%= label_tag(:description) %>
-<%= text_field_tag(:description) %>
+<%= text_field_tag(:description, @product.description) %>
 </div>
 
 <div>

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  
+
   def everything
     @everything = Product.all # one file for each view folder.
   end
@@ -18,9 +18,25 @@ class ProductsController < ApplicationController
     render "new.html.erb"
   end
 
+  def create
+    @product = Product.new(
+      name: params[:name],
+      price: params[:price],
+      color: params[:color],
+      description: params[:description]
+    )
+    @product.save
+    render "create.html.erb"
+  end
+
+  def edit
+    @product = Product.find_by(id: params[:id])
+    render "edit.html.erb"
+  end
+
   def form
     Product.create(
-    name: params[:item_name],
+    name: params[:name],
     price: params[:price],
     color: params[:color],
     description: params[:description]

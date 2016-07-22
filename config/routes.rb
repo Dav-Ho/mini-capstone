@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get "/products" => "products#index"
   get "/products/new" => "products#new"
   get "/products/:id" => "products#show"
+  get "/products/edit" => "products#edit_show"
+  post "/products/edit" => "products#edit"
+  get "/products/create" => "products#show"
+  post "/products/create" => "products#create"
   get "/form" => "products#new"
   post "/form" => "products#form"
 
