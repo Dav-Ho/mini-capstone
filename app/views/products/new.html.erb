@@ -1,0 +1,27 @@
+<h3>This is the contact page</h3>
+
+<%= form_tag do %>
+<div>
+  <%= label_tag(:item_name) %>
+  <%= text_field_tag(:item_name) %>
+</div>
+
+<div>
+ <%= label_tag(:price) %>
+<%= text_field_tag(:price) %>
+</div>
+
+<div>
+ <%= label_tag(:color) %>
+<%= text_field_tag(:color) %>
+</div>
+
+<div>
+<%= label_tag(:description) %>
+<%= text_field_tag(:description) %>
+</div>
+
+<div>
+  <%= submit_tag("Lets see what happens") %>
+</div>
+<% end %>

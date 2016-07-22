@@ -1,0 +1,10 @@
+<h2>Here are all of your items</h2>
+
+<% @products.each do |product| %>
+      <h3>Title:<%= link_to product.title, "/products/#{products.id}" %> </h3>
+  <ul>
+  <ol>Price:<%= product.price %></ol>
+  <ol>Color:<%= product.color %></ol>
+  <ol>Description:<%= product.description %></ol>
+  </ul>
+<% end %>

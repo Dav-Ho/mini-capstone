@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  get "everything" => "products#everything"
+  get "/everything" => "products#everything"
+  get "/products" => "products#index"
+  get "/products/new" => "products#new"
+  get "/products/:id" => "products#show"
+  get "/form" => "products#new"
+  post "/form" => "products#form"
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,17 +1,30 @@
 class ProductsController < ApplicationController
-  def everything  # one file for each view folder.
-    @everything = Product.all
+  
+  def everything
+    @everything = Product.all # one file for each view folder.
   end
 
-  def xbox
-    @xbox = product1.all
+  def index
+    @products = Product.all
+    render "index.html.erb"
   end
 
-  def playstation
-    @playstation = product2.all
+  def show
+    @product = Product.find_by(id: params[:id])
+    render "show.html.erb"
   end
 
-  def wii_u
-    @wii_u = product3.all
+  def new
+    render "new.html.erb"
+  end
+
+  def form
+    Product.create(
+    name: params[:item_name],
+    price: params[:price],
+    color: params[:color],
+    description: params[:description]
+    )
+    render "new.html.erb"
   end
 end
