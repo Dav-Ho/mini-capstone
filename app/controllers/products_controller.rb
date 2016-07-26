@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-
   def everything
     @everything = Product.all # one file for each view folder.
   end
@@ -20,12 +19,15 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(
+
       name: params[:name],
       price: params[:price],
       color: params[:color],
-      description: params[:description]
+      description: params[:description],
+      image: params[:image]
     )
     @product.save
+    redirect_to "/products/#{@product.id}"
     render "create.html.erb"
   end
 
@@ -34,13 +36,23 @@ class ProductsController < ApplicationController
     render "edit.html.erb"
   end
 
-  def form
-    Product.create(
-    name: params[:name],
-    price: params[:price],
-    color: params[:color],
-    description: params[:description]
-    )
-    render "new.html.erb"
+  def update
+    @product = Product.find_by(id: params[:id])
+      @product.update(
+        name: params[:name],
+        price: params[:price],
+        color: params[:color],
+        description: params[:description],
+        image: params[:image]
+      )
+      flash[:success] = "#{@product.name} was successful"
+      redirect_to "/products/#{@product.id}"
+  end
+
+  def destroy
+    @product = Product.find_by(id: params[:id])
+    @product.destroy
+    flash[:success] = "#{@recipe.title} was destroyed!" 
+    redirect_to "/products"
   end
 end

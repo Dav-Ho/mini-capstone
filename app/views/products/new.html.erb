@@ -1,6 +1,6 @@
 <h3>This is the contact page</h3>
 
-<%= form_tag("/products/create", method: "post") do %>
+<%= form_tag("/products", method: "post") do %>
 
 <div>
   <%= label_tag(:name) %>
@@ -20,6 +20,11 @@
 <div>
 <%= label_tag(:description) %>
 <%= text_field_tag(:description) %>
+</div>
+
+<div>
+<%= label_tag(:image) %>
+<%= text_field_tag(:image) %>
 </div>
 
 <div>

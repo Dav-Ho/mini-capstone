@@ -1,11 +1,21 @@
 <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
 
-<h2>Here are your product!</h2>
+<h2>Here is your product!</h2>
+<div class="show">
+<img src= "<%= @product.image %>" alt = "">
+<h3>Item: <%= @product.name %></h3>
+
+<h4>Retail Value: $<%= @product.price %></h4>
+<h4>Color: <%= @product.color %></h4>
+<h4>Description: <%= @product.description %></h4><br>
+</div>
 
 
-<h2><%= @product.name %></h2><br>
-<ul>
-<ol>Item Name: <%= @product.price %></ol><br>
-<ol>Color: <%= @product.color %></ol><br>
-<ol>Description: <%= @product.description %></ol><br>
-<ul>
+
+<h4> Is it on Sale?: <%= @product.sale_message %></h4>
+<h4> Tax: $<%= @product.tax %></h4>
+<h4> Final Price: $<%= @product.total %></h4>
+
+<h4><%=link_to "Edit", "/products/#{@product.id}/edit", method: :get %></h4>
+<h4><%=link_to "Back to Products", "/products", method: :get %></h4><br><br>
+<h4><%=link_to "Delete", "/products/#{@product.id}", method: :delete %></h4>

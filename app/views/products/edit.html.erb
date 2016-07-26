@@ -1,6 +1,6 @@
-<h3>This is the contact page</h3>
+<h3>This is the edit page</h3>
 
-<%= form_tag("/products/edit", method: "post") do %>
+<%= form_tag("/products/#{@product.id}", method: "patch") do %>
 
 <div>
   <%= label_tag(:name) %>
@@ -23,6 +23,11 @@
 </div>
 
 <div>
-  <%= submit_tag("Lets see what happens") %>
+<%= label_tag(:image) %>
+<%= text_field_tag(:image, @product.image) %>
+</div>
+
+<div>
+  <%= submit_tag("Finish your Edit") %>
 </div>
 <% end %>

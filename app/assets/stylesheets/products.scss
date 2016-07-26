@@ -1,6 +1,18 @@
 ol {font-size: 25px;}
 
+body {
+  background-image:url("asanoha-400px.png");
+}
 
+.products-index img {
+  width: 60%;
+  height: 200px;
+}
+
+.show img {
+  width: 40%;
+  height: 400px;
+}
 
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
