@@ -6,6 +6,7 @@
 <h3>Item: <%= @product.name %></h3>
 
 <h4>Retail Value: $<%= @product.price %></h4>
+<h4>Company: <%= @product.supplier.name %>
 <h4>Color: <%= @product.color %></h4>
 <h4>Description: <%= @product.description %></h4><br>
 </div>
@@ -17,5 +18,5 @@
 <h4> Final Price: $<%= @product.total %></h4>
 
 <h4><%=link_to "Edit", "/products/#{@product.id}/edit", method: :get %></h4>
-<h4><%=link_to "Back to Products", "/products", method: :get %></h4><br><br>
+<h4><%=link_to "Back to Products", "/products", method: :get %></h4><br>
 <h4><%=link_to "Delete", "/products/#{@product.id}", method: :delete %></h4>
