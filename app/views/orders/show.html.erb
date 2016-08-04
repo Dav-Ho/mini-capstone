@@ -1,0 +1,10 @@
+<h3>Here is your order confirmation</h3>
+
+
+ <h5>Your order ID is: <%= @order.id %></h5>
+ <h5>You have <%= @order.quantity %> items in your inventory.</h5>
+ <h5> Your product_id is number #<%= @order.product_id %></h5>
+<img src= "<%= @order.image %>" alt = "">
+<h5>Your subtotal is: $<%= @order.order_subtotal %> </h5>
+<h5>Your taxes are: $<%= @order.tax %> </h5>
+<h5>Your total is: $<%= @order.total %></h5>

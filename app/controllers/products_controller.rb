@@ -14,6 +14,9 @@ class ProductsController < ApplicationController
       render "index.html.erb"
     elsif params[:full_price]
       @products = Product.where("price > ?", 100)
+    elsif params[:category]
+      category = Category.find_by(name: params[:category])
+       @products = category.products  
     end
   end
 

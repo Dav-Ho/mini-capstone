@@ -4,6 +4,9 @@
 
 <h3><%= link_to "Create a new item", "/products/new" %></h3>
 
+<% @products.each do |product| %>
+<%= product.name %>
+<% end  %>
 
 <div class="row products-index">
   <% @products.each do |product| %>

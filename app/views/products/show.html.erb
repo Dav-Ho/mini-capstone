@@ -11,11 +11,22 @@
 <h4>Description: <%= @product.description %></h4><br>
 </div>
 
-
-
 <h4> Is it on Sale?: <%= @product.sale_message %></h4>
 <h4> Tax: $<%= @product.tax %></h4>
 <h4> Final Price: $<%= @product.total %></h4>
+
+<div>
+  <%= form_tag '/orders', method: "post" do %>
+  <h4><%= label_tag :quantity %></h4>
+  <h4><%= text_field_tag :quantity %></h4>
+</div>
+<div>
+  <h4><%= label_tag :product_id %></h4>
+  <h4><%= text_field_tag :product_id, @product.id %></h4>
+</div>
+  <h4><%= submit_tag "Add to Cart" %>
+<% end  %>
+
 
 <h4><%=link_to "Edit", "/products/#{@product.id}/edit", method: :get %></h4>
 <h4><%=link_to "Back to Products", "/products", method: :get %></h4><br>

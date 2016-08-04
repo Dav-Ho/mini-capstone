@@ -1,8 +1,10 @@
 class Product < ActiveRecord::Base
   belongs_to :supplier
-
+  has_many :category_products
+  has_many :categories, through: :category_products
+  
   def sale_message
-    if price.to_i < 2
+    if price < 2
       "Discount Item!"
     else
       "On Sale!"
@@ -10,10 +12,10 @@ class Product < ActiveRecord::Base
   end
 
   def tax
-    price.to_i * 0.09
+    price * 0.09
   end
 
   def total
-    price.to_i + tax
+    price + tax
   end
 end
