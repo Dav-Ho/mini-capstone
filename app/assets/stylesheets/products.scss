@@ -4,9 +4,17 @@ body {
   background-image:url("asanoha-400px.png");
 }
 
-.products-index img {
-  width: 60%;
+.products-index {
+  background: #ECEFF4;
+  padding:0 15px 15px 80px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.35);
+  min-height: 550px;
+}
+
+.image-size img {
+  width: 80%;
   height: 200px;
+  margin-bottom: 20px;
 }
 
 .show img {
@@ -15,7 +23,7 @@ body {
 }
 
 div.index_format {
-  margin: 20px 0 20px 0 20px;
+  margin: 0;
 }
 
 // Place all the styles related to the Products controller here.

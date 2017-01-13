@@ -1,33 +1,44 @@
 <h3>This is the edit page</h3>
 
 <%= form_tag("/products/#{@product.id}", method: "patch") do %>
+<% if @product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this article from being saved:</h2>
 
+    <ul>
+    <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <div>
   <%= label_tag(:name) %>
   <%= text_field_tag(:name, @product.name) %>
 </div>
 
 <div>
- <%= label_tag(:price) %>
-<%= text_field_tag(:price, @product.price) %>
+  <%= label_tag(:price) %>
+  <%= text_field_tag(:price, @product.price) %>
 </div>
 
 <div>
- <%= label_tag(:color) %>
-<%= text_field_tag(:color, @product.color) %>
+  <%= label_tag(:color) %>
+  <%= text_field_tag(:color, @product.color) %>
 </div>
 
 <div>
-<%= label_tag(:description) %>
-<%= text_field_tag(:description, @product.description) %>
+  <%= label_tag(:description) %>
+  <%= text_field_tag(:description, @product.description) %>
 </div>
 
 <div>
-<%= label_tag(:image) %>
-<%= text_field_tag(:image, @product.image) %>
+  <%= label_tag(:image) %>
+  <%= text_field_tag(:image, @product.image) %>
 </div>
 
 <div>
   <%= submit_tag("Finish your Edit") %>
 </div>
 <% end %>
+ 

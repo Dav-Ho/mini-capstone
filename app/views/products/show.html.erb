@@ -1,33 +1,39 @@
 <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
 
-<h2>Here is your product!</h2>
+<center>
+<h2>The product is: <%= @product.sale_message %></h2>
 <div class="show">
-<img src= "<%= @product.image %>" alt = "">
-<h3>Item: <%= @product.name %></h3>
-
-<h4>Retail Value: $<%= @product.price %></h4>
-<h4>Company: <%= @product.supplier.name %>
-<h4>Color: <%= @product.color %></h4>
-<h4>Description: <%= @product.description %></h4><br>
+  <img src= "<%= @product.image %>" alt = "">
+  <h3>Item: <%= @product.name %></h3>
+  <h4>Company: <%= @product.supplier.name %>
+  <h4>Color: <%= @product.color %></h4>
+  <h4>Description: <%= @product.description %></h4><br>
 </div>
 
-<h4> Is it on Sale?: <%= @product.sale_message %></h4>
+
+<h4>Retail Value: $<%= @product.price %></h4>
 <h4> Tax: $<%= @product.tax %></h4>
 <h4> Final Price: $<%= @product.total %></h4>
 
-<div>
-  <%= form_tag '/orders', method: "post" do %>
-  <h4><%= label_tag :quantity %></h4>
-  <h4><%= text_field_tag :quantity %></h4>
-</div>
-<div>
-  <h4><%= label_tag :product_id %></h4>
-  <h4><%= text_field_tag :product_id, @product.id %></h4>
-</div>
-  <h4><%= submit_tag "Add to Cart" %>
+
+<% if current_user && current_user.admin %>
+  <div>
+  <%= form_tag '/checkout', method: "post" do %>
+    <h4><%= label_tag :quantity %></h4>
+    <h4><%= text_field_tag :quantity %></h4>
+  </div>
+  <div>
+    <h4><%= label_tag :product_id %></h4>
+    <h4><%= text_field_tag :product_id, @product.id %></h4>
+    <h4><%= submit_tag "Add to Cart" %>
+  </div>
+  <% end %>
 <% end  %>
 
-
-<h4><%=link_to "Edit", "/products/#{@product.id}/edit", method: :get %></h4>
 <h4><%=link_to "Back to Products", "/products", method: :get %></h4><br>
-<h4><%=link_to "Delete", "/products/#{@product.id}", method: :delete %></h4>
+
+# <% if current_user && current_user.admin %>
+#   <h4><%=link_to "Edit", "/products/#{@product.id}/edit", method: :get %></h4>
+#   <h4><%=link_to "Delete", "/products/#{@product.id}", method: :delete %></h4>
+# <% end %>
+</center>

@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
-  def everything
-    @everything = Product.all # one file for each view folder.
-  end
+  # before_action :authorize_admin!, except: [:index, :show]
 
   def index
     @products = Product.all
@@ -16,7 +14,7 @@ class ProductsController < ApplicationController
       @products = Product.where("price > ?", 100)
     elsif params[:category]
       category = Category.find_by(name: params[:category])
-       @products = category.products  
+      @products = category.products
     end
   end
 
@@ -31,26 +29,27 @@ class ProductsController < ApplicationController
   end
 
   def new
-    render "new.html.erb"
+    @product = Product.new
   end
 
   def create
-    @product = Product.new(
-
+    @product = Product.create(
       name: params[:name],
       price: params[:price],
       color: params[:color],
-      description: params[:description],
-      image: params[:image]
+      description: params[:description]
     )
-    @product.save
-    redirect_to "/products/#{@product.id}"
-    render "create.html.erb"
+    if @product.valid?
+      flash[:success] = "This was created"
+      redirect_to "/products/#{@product.id}"
+    else
+      flash[:warning] = @product.errors.full_messages
+      render "new.html.erb"
+    end
   end
 
   def edit
     @product = Product.find_by(id: params[:id])
-    render "edit.html.erb"
   end
 
   def update
@@ -62,14 +61,19 @@ class ProductsController < ApplicationController
       description: params[:description],
       image: params[:image]
     )
-    flash[:success] = "#{@product.name} was successful"
-    redirect_to "/products/#{@product.id}"
+    if @product.valid?
+      flash[:success] = "#{@product.name} was successful"
+      redirect_to "/products/#{@product.id}"
+    else
+      flash[:warning] = "There is something wrong"
+      render "edit"
+    end
   end
 
   def destroy
     @product = Product.find_by(id: params[:id])
     @product.destroy
-    flash[:success] = "#{@recipe.title} was destroyed!"
+    flash[:success] = "#{@product.title} was destroyed!"
     redirect_to "/products"
   end
 end

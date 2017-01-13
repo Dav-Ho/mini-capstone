@@ -1,0 +1,14 @@
+<h3>This is the index page</h3>
+
+<% @carts.each do |cart|  %>
+  <h3>Your Product is:  <%= cart.product.name %></h3>
+  <h3>Product Id: <%= cart.product_id %></h3>
+  <h3>Quantity: <%= cart.quantity %></h3>
+  <%= link_to "Delete", "/checkout/#{cart.id}", method: "delete" %>
+<% end  %>
+
+<%= form_tag "/orders", method: "post" do %>
+<div>
+  <%= submit_tag "Buy now" %>
+</div>
+<% end %>

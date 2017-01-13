@@ -1,20 +1,25 @@
-<h1>Signup</h1>
-<%= form_tag '/users', method: :post do  %>
+<div class="container">
+  <h1>Signup</h1>
+<%= form_for :users, url: '/users', method: "post" do |f| %>
   <div>
-    <%= label_tag :name %>
-    <%= text_field_tag :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
   </div>
   <div>
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
   </div>
   <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
   </div>
   <div>
-    <%= label_tag :password_confirmation %>
-    <%= password_field_tag :password_confirmation %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
   </div>
-  <%= submit_tag "Submit" %>
+
+    <%= f.submit "Submit" %>
+  </div>
+</div>
 <% end %>

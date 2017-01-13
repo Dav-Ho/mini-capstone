@@ -1,20 +1,10 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :product
+  has_many :carted_products
+  has_many :products, through: :carted_products
 
-  def order_subtotal
-    product.price * quantity
-  end
-
-  def tax
-    product.price * quantity * 0.09
-  end
-
-  def total
-    product.price * quantity + tax
-  end
-
-  def image
-    product.image
-  end
+validates :subtotal, numericality: true, presence: true
+validates :tax, numericality: true, presence: true
+validates :total, numericality: true, presence: true
 end

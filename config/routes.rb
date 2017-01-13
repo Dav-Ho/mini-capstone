@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "/" => "products#index"
   get "/products" => "products#index"
   get "/products/new" => "products#new"
   post "/products" => "products#create"
@@ -17,12 +16,12 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   delete "/logout" => "sessions#destroy"
 
-  get "/orders" => "orders#new"
   post "/orders" => "orders#create"
   get "/orders/:id" => "orders#show"
 
-  get "/checkout" => "carted_products#new"
+  get "/checkout" => "carted_products#index"
   post "/checkout" => "carted_products#create"
+  delete "/checkout/:id" => "carted_products#destroy"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

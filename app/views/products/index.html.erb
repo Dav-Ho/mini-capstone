@@ -1,23 +1,19 @@
 
 <h2>Welcome to Shopaholic</h2>
 
-
 <h3><%= link_to "Create a new item", "/products/new" %></h3>
+<div class="row">
+  <div class="image-size">
+    <% @products.each do |product| %>
+      <div class="col-md-4">
+        <div class="index_format">
 
-<% @products.each do |product| %>
-<%= product.name %>
-<% end  %>
-
-<div class="row products-index">
-  <% @products.each do |product| %>
-    <div class="col-md-4">
-      <div class="index_format">
-      <h3>Title:<%= link_to product.name, "/products/#{product.id}" %> </h3>
-      <img src ="<%= product.image %>" alt= "">
-      <h4>Price:<%= product.price %></h4>
-      <h4>Color:<%= product.color %></h4>
-      <h4><%= link_to "edit", "/products/#{product.id}/edit" %> </h4>
-    </div>
-    </div>
-  <% end %>
-</div>
+          <img src ="<%= product.image %>" alt= "<%= product.name %>">
+          <h4>Price:<%= product.price %></h4>
+          <h4><%= link_to product.name, "/products/#{product.id}" %></h4>
+          <h4>Color:<%= product.color %></h4>
+          <!-- <h4><%= link_to "edit", "/products/#{product.id}/edit" %> </h4> -->
+        </div>
+      </div>
+    <% end %>
+  </div>

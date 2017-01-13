@@ -1,8 +1,15 @@
 class Product < ActiveRecord::Base
   belongs_to :supplier
+  has_many :orders
   has_many :category_products
   has_many :categories, through: :category_products
-  
+  has_many :carted_products
+  has_many :orders, through: :carted_products
+
+  validates :name, presence: true
+  validates :price, numericality: true
+  validates :description, length: { maximum: 500}, presence: true
+
   def sale_message
     if price < 2
       "Discount Item!"
